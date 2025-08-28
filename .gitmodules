@@ -1,3 +1,0 @@
-[submodule "msc_carla_dreamer/CarDreamer"]
-	path = msc_carla_dreamer/CarDreamer
-	url = https://github.com/ucd-dare/CarDreamer.git
