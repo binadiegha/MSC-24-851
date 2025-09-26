@@ -30,7 +30,7 @@ def train_sac():
         "MultiInputPolicy",
         env,
         learning_rate=3e-4,
-        buffer_size=50000,  # Increased buffer size for parallel training
+        buffer_size=50000,  
         learning_starts=10000,
         batch_size=128,
         tau=0.005,

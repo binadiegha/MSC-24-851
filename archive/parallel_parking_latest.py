@@ -106,7 +106,7 @@ class ParallelParkingEnv(AbstractEnv, GoalEnv):
                 "centering_position": [0.5, 0.5],
                 "scaling": 7,
                 "controlled_vehicles": 1,
-                "vehicles_count": 6,  # More vehicles for parallel parking scenario
+                "vehicles_count": 6,  
                 "add_walls": True,
                 "street_length": 100,
                 "parking_spot_length": 8,  # Length of parallel parking spot
@@ -209,7 +209,7 @@ class ParallelParkingEnv(AbstractEnv, GoalEnv):
             # Start position: on the main driving lane, approaching the parking area
             start_x = -self.config["street_length"]/3 + i * 10.0
             vehicle = self.action_type.vehicle_class(
-                self.road, [start_x, 0.0], 0.0, 5.0  # Heading east, some initial speed
+                self.road, [start_x, 0.0], 0.0, 5.0  
             )
             vehicle.color = VehicleGraphics.EGO_COLOR
             self.road.vehicles.append(vehicle)

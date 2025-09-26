@@ -428,7 +428,7 @@ class ParallelParkingEnv(AbstractEnv, GoalEnv):
                 elif vehicle_vy > 0.05 and distance_to_goal < 3.0:
                     parking_approach_bonus = -0.02 * (3.0 - distance_to_goal) / 3.0
         
-        # Success bonus if properly parked
+        # Add Success bonus if properly parked
         success_bonus = 0.0
         if self._is_success(achieved_goal, desired_goal):
             success_bonus = self.config["success_goal_reward"]
@@ -504,7 +504,7 @@ class ParallelParkingEnv(AbstractEnv, GoalEnv):
         if target_spot_idx is None:
             return False
         
-        # Now check if the vehicle is within the correct parking spot boundaries
+        # check if the vehicle is within the correct parking spot boundaries
         target_x_start = -road_length/2 + spacing + target_spot_idx * (spot_length + spacing/spots)
         target_x_end = target_x_start + spot_length
         target_y_center = -lane_width/2 - spot_width/2
@@ -564,16 +564,16 @@ class ParallelParkingEnvEasy(ParallelParkingEnv):
     """Easier version with more time, larger parking spots, and fewer parked cars."""
     def __init__(self):
         super().__init__({
-            "duration": 600,                # Increased from 300
+            "duration": 600,                
             "parking_spot_length": 10,
             "parking_spot_width": 4,
             "success_goal_reward": 0.15,
-            "simulation_frequency": 4,      # Even slower for easy mode
+            "simulation_frequency": 4,      
             "policy_frequency": 1,
-            "orientation_tolerance": 0.2,   # Keep same orientation tolerance
-            "max_parked_cars": 1,          # Fewer parked cars for easy mode
+            "orientation_tolerance": 0.2,  
+            "max_parked_cars": 1,         
             "min_parked_cars": 0,
-            "parked_car_probability": 0.5, # Lower probability of parked cars
+            "parked_car_probability": 0.5, 
         })
 
 
@@ -581,14 +581,14 @@ class ParallelParkingEnvHard(ParallelParkingEnv):
     """Harder version with tighter spots, less time, and more parked cars."""
     def __init__(self):
         super().__init__({
-            "duration": 250,                # Adjusted for slower speed
+            "duration": 250,                
             "parking_spot_length": 6,
             "parking_spot_width": 2.5,
             "success_goal_reward": 0.08,
-            "simulation_frequency": 6,      # Slightly faster for hard mode
+            "simulation_frequency": 6,      
             "policy_frequency": 3,
-            "orientation_tolerance": 0.2,   # Keep same orientation tolerance
-            "max_parked_cars": 2,          # Maximum parked cars for hard mode
-            "min_parked_cars": 1,          # At least 1 parked car
-            "parked_car_probability": 0.9, # Higher probability of parked cars
+            "orientation_tolerance": 0.2,   
+            "max_parked_cars": 2,          
+            "min_parked_cars": 1,          
+            "parked_car_probability": 0.9, 
         })
